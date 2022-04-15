@@ -8,8 +8,8 @@
 [Oo]bj/
 [Tt]emp/
 [Uu]nityGenerated/
-[Ll]ogs
-[Uu]serSettings
+[Ll]ogs/
+[Uu]serSettings/
 
 # file on crash reports
 sysinfo.txt
