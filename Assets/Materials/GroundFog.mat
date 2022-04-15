@@ -30,5 +30,5 @@ Material:
     m_Colors:
     - WS_PlayerPosition: {r: 0, g: 1, b: 0, a: 1}
     - _PlayerPos: {r: 0, g: 1, b: 0, a: 1}
-    - _PlayerPosition: {r: 3.732555, g: 1.0833334, b: 1.6007178, a: 0}
+    - _PlayerPosition: {r: 4.868986, g: 1.0833334, b: 2.738899, a: 0}
   m_BuildTextureStacks: []
