@@ -26,9 +26,24 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Alpha_Clip_Threshold: 0.2
+    - _BUILTIN_AlphaClip: 1
+    - _BUILTIN_Blend: 0
+    - _BUILTIN_CullMode: 0
+    - _BUILTIN_DstBlend: 0
+    - _BUILTIN_QueueControl: -1
+    - _BUILTIN_QueueOffset: 0
+    - _BUILTIN_SrcBlend: 1
+    - _BUILTIN_Surface: 0
+    - _BUILTIN_ZTest: 4
+    - _BUILTIN_ZWrite: 1
+    - _BUILTIN_ZWriteControl: 0
     - _DistanceThreshold: 5
+    - _Edge_Width: 0.05
+    - _Noise_Scale: 30
     m_Colors:
     - WS_PlayerPosition: {r: 0, g: 1, b: 0, a: 1}
+    - _Edge_Color: {r: 0, g: 4.550131, b: 20.95821, a: 0}
     - _PlayerPos: {r: 0, g: 1, b: 0, a: 1}
-    - _PlayerPosition: {r: 3.732555, g: 1.0833334, b: 1.6007178, a: 0}
+    - _PlayerPosition: {r: 0, g: 1.0833334, b: 0, a: 0}
   m_BuildTextureStacks: []
