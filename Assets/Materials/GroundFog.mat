@@ -45,5 +45,5 @@ Material:
     - WS_PlayerPosition: {r: 0, g: 1, b: 0, a: 1}
     - _Edge_Color: {r: 0, g: 4.550131, b: 20.95821, a: 0}
     - _PlayerPos: {r: 0, g: 1, b: 0, a: 1}
-    - _PlayerPosition: {r: 0, g: 1.0833334, b: 0, a: 0}
+    - _PlayerPosition: {r: -0.07970028, g: 1.0833334, b: 2.0091681, a: 0}
   m_BuildTextureStacks: []
