@@ -39,7 +39,6 @@ public class GhostController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(_spawnPoint.transform);
         if (_IsGoingBackToSpawn)
         {
             if (Vector3.Distance(transform.position, _spawnPoint.transform.position) >= _minDistance)
@@ -108,7 +107,7 @@ public class GhostController : MonoBehaviour
             _ExitedTriggerWall = false;
         }
 
-        if (other.tag == "Player" && !_IsGoingBackToSpawn)
+        if (other.CompareTag("Player") && !_IsGoingBackToSpawn)
         {
             _IsGoingBackToSpawn = true;
             _moveSpeed *= _multiplicationCoefficient;

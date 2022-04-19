@@ -18,9 +18,9 @@ public class PacGumController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<PlayerController>())
+        if (other.CompareTag("Player"))
         {
-            this.enabled = false;
+            Debug.Log("Player");
         }
     }
 
