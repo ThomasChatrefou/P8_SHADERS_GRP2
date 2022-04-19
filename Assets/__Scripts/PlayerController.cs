@@ -9,32 +9,22 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] LayerMask _groundLayer;
 
-    [SerializeField] private Material[] _materials;
+    [SerializeField] private Material _material;
 
     private Camera _mainCamera;
     private NavMeshAgent _agent;
 
-    private void Awake()
-    {
-
-        foreach (Material material in _materials)
-            material.SetVector("_PlayerPosition", transform.position);
-    }
 
     void Start()
     {
         _mainCamera = Camera.main;    
         _agent = GetComponent<NavMeshAgent>();
-        _agent.autoRepath = false;
     }
 
    
     void Update()
     {
         Shader.SetGlobalVector("WS_PlayerPosition", transform.position);
-
-        foreach(Material material in _materials)
-            material.SetVector("_PlayerPosition", transform.position);
 
         if (!Input.GetMouseButtonDown(0))
             return;
