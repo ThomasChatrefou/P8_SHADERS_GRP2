@@ -7,37 +7,64 @@ public class GhostController : MonoBehaviour
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _minDistance;
     [SerializeField] private float _dissolveSpeed = 0.005f;
+    [SerializeField] private int _multiplicationCoefficient = 4;
+    [SerializeField] public GameObject _spawnPointToInstantiate;
 
     public GameObject GhostBody;
     private Material _GhostBodyMaterial;
     public GameObject GhostEye;
     private Material _GhostEyeMaterial;
 
+    private float _GhostWobbleSpeedValue;
+
     private GameObject _player;
-    private bool _EnteredTrigger;
-    private bool _ExitedTrigger;
-    
+    private bool _EnteredTriggerWall;
+    private bool _ExitedTriggerWall;
+    private bool _IsGoingBackToSpawn;
+    private GameObject _spawnPoint;
+
     // Start is called before the first frame update
     void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
+        _spawnPoint = Instantiate(_spawnPointToInstantiate, transform);
         _GhostBodyMaterial = GhostBody.GetComponent<MeshRenderer>().material;
         _GhostEyeMaterial = GhostEye.GetComponent<MeshRenderer>().material;
-        _EnteredTrigger = false;
-        _ExitedTrigger = false;
+        _GhostWobbleSpeedValue = _GhostBodyMaterial.GetFloat(Shader.PropertyToID("_WobbleSpeed"));
+        _EnteredTriggerWall = false;
+        _ExitedTriggerWall = false;
+        _IsGoingBackToSpawn = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(_player.transform);
-
-        if (Vector3.Distance(transform.position, _player.transform.position) >= _minDistance)
+        Debug.Log(_spawnPoint.transform);
+        if (_IsGoingBackToSpawn)
         {
-            transform.position += transform.forward * _moveSpeed * Time.deltaTime;
+            if (Vector3.Distance(transform.position, _spawnPoint.transform.position) >= _minDistance)
+            {
+                transform.LookAt(_spawnPoint.transform);
+                transform.position += transform.forward * _moveSpeed * Time.deltaTime;
+            }
+            else
+            {
+                _IsGoingBackToSpawn = false;
+                _moveSpeed /= _multiplicationCoefficient;
+                _GhostWobbleSpeedValue /= _multiplicationCoefficient;
+                _GhostBodyMaterial.SetFloat(Shader.PropertyToID("_WobbleSpeed"), _GhostWobbleSpeedValue);
+                _GhostEyeMaterial.SetFloat(Shader.PropertyToID("_WobbleSpeed"), _GhostWobbleSpeedValue);
+            }
         }
-
-        if (_EnteredTrigger)
+        else
+        {
+            if (Vector3.Distance(transform.position, _player.transform.position) >= _minDistance)
+            {
+                transform.LookAt(_player.transform);
+                transform.position += transform.forward * _moveSpeed * Time.deltaTime;
+            }
+        }
+        if (_EnteredTriggerWall)
         {
             if (_GhostBodyMaterial.GetFloat(Shader.PropertyToID("_Dissolve")) < 1.0f || _GhostEyeMaterial.GetFloat(Shader.PropertyToID("_Dissolve")) < 1.0f)
             {
@@ -48,11 +75,11 @@ public class GhostController : MonoBehaviour
             }
             else
             {
-                _EnteredTrigger = false;
+                _EnteredTriggerWall = false;
             }
         }
 
-        if (_ExitedTrigger)
+        if (_ExitedTriggerWall)
         {
             if (_GhostBodyMaterial.GetFloat(Shader.PropertyToID("_Dissolve")) > 0.0f || _GhostEyeMaterial.GetFloat(Shader.PropertyToID("_Dissolve")) > 0.0f)
             {
@@ -63,7 +90,7 @@ public class GhostController : MonoBehaviour
             }
             else
             {
-                _ExitedTrigger = false;
+                _ExitedTriggerWall = false;
                 _GhostBodyMaterial.SetFloat(Shader.PropertyToID("_StartDissolve"), 0);
                 _GhostEyeMaterial.SetFloat(Shader.PropertyToID("_StartDissolve"), 0);
             }
@@ -73,21 +100,30 @@ public class GhostController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<WallScript>())
+        if (other.GetComponent<WallController>())
         {
             _GhostBodyMaterial.SetFloat(Shader.PropertyToID("_StartDissolve"), 1);
             _GhostEyeMaterial.SetFloat(Shader.PropertyToID("_StartDissolve"), 1);
-            _EnteredTrigger = true;
-            _ExitedTrigger = false;
+            _EnteredTriggerWall = true;
+            _ExitedTriggerWall = false;
+        }
+
+        if (other.tag == "Player" && !_IsGoingBackToSpawn)
+        {
+            _IsGoingBackToSpawn = true;
+            _moveSpeed *= _multiplicationCoefficient;
+            _GhostWobbleSpeedValue *= _multiplicationCoefficient;
+            _GhostBodyMaterial.SetFloat(Shader.PropertyToID("_WobbleSpeed"), _GhostWobbleSpeedValue);
+            _GhostEyeMaterial.SetFloat(Shader.PropertyToID("_WobbleSpeed"), _GhostWobbleSpeedValue);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<WallScript>())
+        if (other.GetComponent<WallController>())
         {
-            _EnteredTrigger = false;
-            _ExitedTrigger = true;
+            _EnteredTriggerWall = false;
+            _ExitedTriggerWall = true;
         }
     }
 }
