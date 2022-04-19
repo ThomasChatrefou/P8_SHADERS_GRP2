@@ -45,7 +45,7 @@ Material:
     - _BorderEmisivePower: 5
     - _BorderEmissionPower: 6.27
     - _BorderWidth: 0.5
-    - _DistanceThreshold: 5
+    - _DistanceThreshold: 8
     - _Edge_Width: 0.05
     - _NoiseFrequency: 0.3
     - _NoiseSpeedReduction: 5
