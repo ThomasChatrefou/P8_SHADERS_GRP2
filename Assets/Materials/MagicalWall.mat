@@ -52,15 +52,16 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AngularSpeed: 0
-    - _DistThresholdDown: 0
-    - _DistThresholdUp: 0
+    - _AngularSpeed: 0.26
+    - _DistThresholdDown: 6
+    - _DistThresholdUp: 9
     - _EffectRange: 66.1
-    - _Height: 8
-    - _Horizontal_Speed: 0
+    - _Height: 7.29
+    - _Horizontal_Speed: 0.62
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _VerticalSpeed: 0
+    - _VerticalSpeed: 0.46
+    - _Width: 5.8
     m_Colors:
-    - _PlayerPosition: {r: 0, g: 1.0833334, b: 0, a: 0}
+    - _PlayerPosition: {r: 4.2280717, g: 1.0833334, b: 8.5, a: 0}
   m_BuildTextureStacks: []
