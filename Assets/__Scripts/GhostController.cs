@@ -115,6 +115,7 @@ public class GhostController : MonoBehaviour
             _GhostWobbleSpeedValue *= _multiplicationCoefficient;
             _GhostBodyMaterial.SetFloat(Shader.PropertyToID("_WobbleSpeed"), _GhostWobbleSpeedValue);
             _GhostEyeMaterial.SetFloat(Shader.PropertyToID("_WobbleSpeed"), _GhostWobbleSpeedValue);
+            other.GetComponent<PlayerBehaviour>().Damage();
         }
     }
 
