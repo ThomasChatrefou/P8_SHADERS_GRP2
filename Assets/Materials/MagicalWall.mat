@@ -53,7 +53,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AngularSpeed: 0.26
-    - _DistThresholdDown: 6
+    - _DistThresholdDown: 7
     - _DistThresholdUp: 9
     - _EffectRange: 66.1
     - _Height: 7.29

@@ -73,7 +73,7 @@ public class GhostController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<WallScript>())
+        if (other.CompareTag("Wall"))
         {
             _GhostBodyMaterial.SetFloat(Shader.PropertyToID("_StartDissolve"), 1);
             _GhostEyeMaterial.SetFloat(Shader.PropertyToID("_StartDissolve"), 1);
@@ -84,7 +84,7 @@ public class GhostController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<WallScript>())
+        if (other.CompareTag("Wall"))
         {
             _EnteredTrigger = false;
             _ExitedTrigger = true;

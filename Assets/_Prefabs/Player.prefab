@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8922071076759643347
+--- !u!1 &7542946855298552327
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,50 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8922071076759643353}
-  - component: {fileID: 8922071076759643358}
-  - component: {fileID: 8922071076759643359}
-  - component: {fileID: 8922071076759643352}
-  - component: {fileID: 8922071076759643357}
-  - component: {fileID: 8922071076759643346}
-  - component: {fileID: 8922071076801733324}
+  - component: {fileID: 7542946855298552349}
+  - component: {fileID: 7542946855298552346}
+  - component: {fileID: 7542946855298552347}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Graphics
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8922071076759643353
+--- !u!4 &7542946855298552349
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8922071076759643347}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_GameObject: {fileID: 7542946855298552327}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 7542946855339844545}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8922071076759643358
+--- !u!33 &7542946855298552346
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8922071076759643347}
+  m_GameObject: {fileID: 7542946855298552327}
   m_Mesh: {fileID: 4300000, guid: 07b805cc50f7b21469eb77045e84e87c, type: 3}
---- !u!23 &8922071076759643359
+--- !u!23 &7542946855298552347
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8922071076759643347}
+  m_GameObject: {fileID: 7542946855298552327}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -65,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a7c27e95f1d7c624780d21743d36717c, type: 2}
+  - {fileID: 2100000, guid: 01df7ad55b5244c4791157a1844776ae, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -87,147 +83,70 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &8922071076759643352
-SphereCollider:
+--- !u!1 &7542946855339844558
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8922071076759643347}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7542946855339844545}
+  - component: {fileID: 7542946855339844547}
+  - component: {fileID: 7542946855339844544}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7542946855339844545
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7542946855339844558}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7542946855298552349}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!143 &7542946855339844547
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7542946855339844558}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.495205
-  m_Center: {x: 0.0000073313713, y: 0.49241188, z: 0.027616918}
---- !u!195 &8922071076759643357
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8922071076759643347}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5000001
-  m_Speed: 10
-  m_Acceleration: 20
-  avoidancePriority: 50
-  m_AngularSpeed: 180
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
   m_Height: 1
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!114 &8922071076759643346
+  m_Radius: 1
+  m_SlopeLimit: 45
+  m_StepOffset: 0
+  m_SkinWidth: 0.001
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7542946855339844544
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8922071076759643347}
+  m_GameObject: {fileID: 7542946855339844558}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b676065fb7444264089b8a985e36f06f, type: 3}
+  m_Script: {fileID: 11500000, guid: 67790c839e76b904886baa1fd88ade51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rayMaxDistance: 50
-  _groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  _material: {fileID: 2100000, guid: cc465cc57eb177b4ea537756877bb5aa, type: 2}
---- !u!114 &8922071076801733324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8922071076759643347}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f765168e56ee8748a8d47571376628f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initLife: 3
-  flashingSequence:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0.0029683064
-      outSlope: 0.0029683064
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.15967898
-      value: 1.000474
-      inSlope: 0.01358445
-      outSlope: 0.01358445
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.90093195
-      outWeight: 0.5151902
-    - serializedVersion: 3
-      time: 0.26586482
-      value: 0.4994223
-      inSlope: -0.0009218848
-      outSlope: -0.0009218848
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.4653045
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.46925426
-      value: 0.9890207
-      inSlope: -0.07942539
-      outSlope: -0.07942539
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.25751266
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.58582926
-      value: 0.99131805
-      inSlope: -0.007308309
-      outSlope: -0.007308309
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.061839312
-    - serializedVersion: 3
-      time: 0.6794473
-      value: 0.6580582
-      inSlope: 0.005222059
-      outSlope: 0.005222059
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.90170896
-      value: 0.9963305
-      inSlope: 0.043302726
-      outSlope: 0.043302726
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.06847594
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0.03733301
-      outSlope: 0.03733301
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 1
-    m_PostInfinity: 1
-    m_RotationOrder: 4
-  life: 3
+  _camera: {fileID: 0}
+  _speed: 6
+  _turnSmoothTime: 0.1
