@@ -26,7 +26,6 @@ public class PlayerBehaviour : MonoBehaviour
     void Update()
     {
         float evaluatedValue = flashingSequence.Evaluate(Time.time * (initLife - life));
-        Debug.Log(evaluatedValue);
         chompMat.SetFloat("_ColorMultiplier", evaluatedValue);
     }
 
@@ -35,7 +34,7 @@ public class PlayerBehaviour : MonoBehaviour
         life--;
         if(life <= 0)
         {
-            Debug.Log("You lost");
+            MenuManager.instance.DisplayMessageAndReset("You lost");
         }
     }
 }
