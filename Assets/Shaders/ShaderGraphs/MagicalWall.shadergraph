@@ -8478,7 +8478,7 @@
     "m_DefaultRefNameVersion": 1,
     "m_RefNameGeneratedByDisplayName": "PlayerPosition",
     "m_DefaultReferenceName": "_PlayerPosition",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "WS_PlayerPosition",
     "m_GeneratePropertyBlock": false,
     "m_UseCustomSlotLabel": false,
     "m_CustomSlotLabel": "",
