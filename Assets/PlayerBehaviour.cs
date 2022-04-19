@@ -6,15 +6,9 @@ public class PlayerBehaviour : MonoBehaviour
 {
     [SerializeField] int initLife = 3;
     [SerializeField] AnimationCurve flashingSequence;
+    [SerializeField] Material chompMat;
 
-    public int life;
-
-    private Material chompMat;
-
-    void Awake()
-    {
-        chompMat = GetComponent<MeshRenderer>().material;
-    }
+    private int life;
 
     // Start is called before the first frame update
     void Start()

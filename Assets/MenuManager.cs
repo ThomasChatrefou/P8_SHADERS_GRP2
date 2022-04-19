@@ -32,8 +32,14 @@ public class MenuManager : MonoBehaviour
         textDisplayer.gameObject.SetActive(false);
     }
 
+    private void Update()
+    {
+        Debug.Log("test");
+    }
+
     public void OnEscape()
     {
+        Debug.Log("escape");
         escapeMenu.SetActive(!escapeMenu.activeSelf);
         Time.timeScale = escapeMenu.activeSelf ? 0 : 1;
     }
@@ -60,7 +66,7 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    void onDestroy()
+    void OnDestroy()
     {
         instance = null;
     }
