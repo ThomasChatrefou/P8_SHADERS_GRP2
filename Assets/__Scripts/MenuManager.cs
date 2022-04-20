@@ -34,7 +34,6 @@ public class MenuManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("test");
     }
 
     public void OnEscape()
