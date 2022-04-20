@@ -44,17 +44,17 @@ Material:
     - _BUILTIN_ZWriteControl: 0
     - _BorderEmisivePower: 5
     - _BorderEmissionPower: 6.27
-    - _BorderWidth: 0.5
+    - _BorderWidth: 0.3
     - _DistanceThreshold: 8
     - _Edge_Width: 0.05
     - _NoiseFrequency: 0.3
     - _NoiseSpeedReduction: 5
-    - _NoiseSubFractalPower: 2.5
-    - _NoiseWidth: 2
+    - _NoiseSubFractalPower: 2.23
+    - _NoiseWidth: 1.52
     - _Noise_Scale: 30
     m_Colors:
     - WS_PlayerPosition: {r: 0, g: 1, b: 0, a: 1}
-    - _BorderColor: {r: 0.47058824, g: 1, b: 1, a: 1}
+    - _BorderColor: {r: 3.764706, g: 8, b: 8, a: 1}
     - _Edge_Color: {r: 0, g: 4.550131, b: 20.95821, a: 0}
     - _PlayerPos: {r: 0, g: 1, b: 0, a: 1}
     - _PlayerPosition: {r: 0, g: 0, b: 0, a: 0}
