@@ -61,7 +61,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _VerticalSpeed: 0.46
-    - _Width: 7
+    - _Width: 5
     m_Colors:
     - _PlayerPosition: {r: 4.2280717, g: 1.0833334, b: 8.5, a: 0}
   m_BuildTextureStacks: []
