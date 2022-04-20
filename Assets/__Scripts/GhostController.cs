@@ -65,10 +65,10 @@ public class GhostController : MonoBehaviour
         }
         if (_EnteredTriggerWall)
         {
-            if (_GhostBodyMaterial.GetFloat(Shader.PropertyToID("_Dissolve")) < 1.0f)
+            if (_GhostBodyMaterial.GetFloat(Shader.PropertyToID("_Dissolve")) > 0.0f)
             {
                 float valueDissolveGhostBody = _GhostBodyMaterial.GetFloat(Shader.PropertyToID("_Dissolve"));
-                _GhostBodyMaterial.SetFloat(Shader.PropertyToID("_Dissolve"), valueDissolveGhostBody + _dissolveSpeed);
+                _GhostBodyMaterial.SetFloat(Shader.PropertyToID("_Dissolve"), valueDissolveGhostBody - _dissolveSpeed);
             }
             else
             {
@@ -78,15 +78,14 @@ public class GhostController : MonoBehaviour
 
         if (_ExitedTriggerWall)
         {
-            if (_GhostBodyMaterial.GetFloat(Shader.PropertyToID("_Dissolve")) > 0.0f)
+            if (_GhostBodyMaterial.GetFloat(Shader.PropertyToID("_Dissolve")) < 1.0f)
             {
                 float valueDissolveGhostBody = _GhostBodyMaterial.GetFloat(Shader.PropertyToID("_Dissolve"));
-                _GhostBodyMaterial.SetFloat(Shader.PropertyToID("_Dissolve"), valueDissolveGhostBody - _dissolveSpeed);
+                _GhostBodyMaterial.SetFloat(Shader.PropertyToID("_Dissolve"), valueDissolveGhostBody + _dissolveSpeed);
             }
             else
             {
                 _ExitedTriggerWall = false;
-                _GhostBodyMaterial.SetFloat(Shader.PropertyToID("_StartDissolve"), 0);
             }
         }
 
@@ -96,7 +95,6 @@ public class GhostController : MonoBehaviour
     {
         if (other.CompareTag("Wall"))
         {
-            _GhostBodyMaterial.SetFloat(Shader.PropertyToID("_StartDissolve"), 1);
             _EnteredTriggerWall = true;
             _ExitedTriggerWall = false;
         }

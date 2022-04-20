@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pacGumCollectedNumber: 0
   pacGumMaxNumber: 0
+  pacGumCounter: {fileID: 0}
