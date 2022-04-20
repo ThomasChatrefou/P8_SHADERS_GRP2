@@ -12,6 +12,7 @@ public class ThirdPersonMovement : MonoBehaviour
     [SerializeField] private Transform _camera;
     [SerializeField] private float _speed = 6f;
     [SerializeField] private float _turnSmoothTime = 0.1f;
+    [SerializeField] private AudioClip _movingSound;
 
     private float _turnSmoothVelocity;
 
@@ -38,6 +39,12 @@ public class ThirdPersonMovement : MonoBehaviour
 
             Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             _controller.Move(moveDirection.normalized * _speed * Time.deltaTime);
+
+            SoundManager.instance.playMovingSound(_movingSound);
+        }
+        else
+        {
+            SoundManager.instance.stopMovingSound();
         }
 
         if (transform.position.y > 1.01f)

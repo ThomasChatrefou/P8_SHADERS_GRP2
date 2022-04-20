@@ -7,6 +7,8 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] int initLife = 3;
     [SerializeField] AnimationCurve flashingSequence;
     [SerializeField] Material chompMat;
+    [SerializeField] AudioClip damageSound;
+    [SerializeField] AudioClip deathSound;
 
     private int life;
 
@@ -28,7 +30,12 @@ public class PlayerBehaviour : MonoBehaviour
         life--;
         if(life <= 0)
         {
+            SoundManager.instance.playSound(deathSound);
             MenuManager.instance.DisplayMessageAndReset("You lost");
+        }
+        else
+        {
+            SoundManager.instance.playSound(damageSound);
         }
     }
 }
