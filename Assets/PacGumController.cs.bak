@@ -1,0 +1,39 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PacGumController : MonoBehaviour
+{
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+<<<<<<< HEAD
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Player");
+            gameObject.SetActive(false);
+        }
+=======
+        /*if (other.GetComponent<PlayerController>())
+        {
+            this.enabled = false;
+        }*/
+>>>>>>> master
+    }
+
+    private void OnDisable()
+    {
+        //TODO: Add counting sphere
+    }
+}
