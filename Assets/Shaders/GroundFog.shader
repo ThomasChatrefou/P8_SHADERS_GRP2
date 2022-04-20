@@ -1,4 +1,4 @@
-Shader"Learning/Unlit/Ground Dissolve"
+Shader"P8_Shaders/Unlit/Ground_Dissolve"
 {
     Properties
     {   
@@ -11,8 +11,7 @@ Shader"Learning/Unlit/Ground Dissolve"
         _NoiseSubFractalPower("Noise Subfractral Power", Range(0.001, 10)) = 2
         _NoiseSpeedReduction("Noise Speed Reduction", Range(1, 10)) = 5
         _BorderWidth("Border Width", Range(0.001, 10)) = 2
-        _BorderColor("Border Color", Color) = (0.9, 0.9, 1, 1)
-        _BorderEmissionPower("Border Emission Power", Range(1, 10)) = 5
+        [HDR]_BorderColor("Border Color", Color) = (4.5, 4.5, 5, 1)
     }
     
     SubShader
@@ -61,9 +60,12 @@ float4 frag(v2f i) : SV_Target
                                 (tex2D(_Noise, WS_PlayerPosition.xz / _NoiseSpeedReduction + playerToBorder.xz * _NoiseSubFractalPower).r - 0.5) / 2 +
                                 (tex2D(_Noise, WS_PlayerPosition.xz + playerToBorder.xz * (_NoiseSubFractalPower * _NoiseSubFractalPower)).r - 0.5) / 4;
     float distPlayerFragment = distance(WS_PlayerPosition, i.worldSpacePos);
-    float isInside = step(distPlayerFragment, _DistanceThreshold + distanceOffsetNoise * _NoiseWidth);
-    float isBorder = step(distPlayerFragment, _DistanceThreshold + distanceOffsetNoise * _NoiseWidth + _BorderWidth);
-    return isInside * tex2D(_Albedo, i.uv) + isBorder * (1-isInside) * _BorderColor * _BorderEmissionPower;
+    float maxDistance = _DistanceThreshold + distanceOffsetNoise * _NoiseWidth;
+    if (distPlayerFragment > maxDistance + _BorderWidth)
+        discard;
+    float isInside = step(distPlayerFragment, maxDistance);
+    float isBorder = step(distPlayerFragment, maxDistance + _BorderWidth);
+    return isInside * tex2D(_Albedo, i.uv) + isBorder * (1-isInside) * _BorderColor;
 }
             
             ENDHLSL
