@@ -5,7 +5,7 @@ Shader"P8_Shaders/Unlit/Ground_Dissolve"
         // NOM_VARIABLE("NOM_AFFICHE_DANS_L'INSPECTOR", Shaderlab type) = defaultValue
         _Albedo("Albedo", 2D) = "white" {}
         _Noise("Noise", 2D) = "black" {}
-        _DistanceThreshold("Distance Threshold", Range(0.1,20.0)) = 10.0  // slider
+        _DistanceThreshold("Distance Threshold", Range(0.1,50.0)) = 10.0  // slider
         _NoiseFrequency("Noise Frequency", Range(0.001, 10)) = 1
         _NoiseWidth("Noise Width", Range(0.001, 10)) = 1
         _NoiseSubFractalPower("Noise Subfractral Power", Range(0.001, 10)) = 2
