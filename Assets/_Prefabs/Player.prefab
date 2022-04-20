@@ -151,6 +151,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _speed: 6
   _turnSmoothTime: 0.1
+  _movingSound: {fileID: 8300000, guid: f2f1614e38616ec408f455cc41e17918, type: 3}
 --- !u!114 &778476003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,3 +244,5 @@ MonoBehaviour:
     m_PostInfinity: 1
     m_RotationOrder: 4
   chompMat: {fileID: 2100000, guid: a7c27e95f1d7c624780d21743d36717c, type: 2}
+  damageSound: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: 634a7a187496fbd41997daed7ee7c9c5, type: 3}

@@ -56,12 +56,12 @@ public class MenuManager : MonoBehaviour
     {
         textDisplayer.text = msg;
         textDisplayer.gameObject.SetActive(true);
-        StartCoroutine(HideTextAfterOneSecondAndResetScene());
+        StartCoroutine(HideTextAfterTwoSecondAndResetScene());
     }
 
-    IEnumerator HideTextAfterOneSecondAndResetScene()
+    IEnumerator HideTextAfterTwoSecondAndResetScene()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         textDisplayer.gameObject.SetActive(true);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
