@@ -65,7 +65,7 @@ public class GhostController : MonoBehaviour
         }
         if (_EnteredTriggerWall)
         {
-            if (_GhostBodyMaterial.GetFloat(Shader.PropertyToID("_Dissolve")) < 1.0f || _GhostEyeMaterial.GetFloat(Shader.PropertyToID("_Dissolve")) < 1.0f)
+            if (_GhostBodyMaterial.GetFloat(Shader.PropertyToID("_Dissolve")) < 1.0f)
             {
                 float valueDissolveGhostBody = _GhostBodyMaterial.GetFloat(Shader.PropertyToID("_Dissolve"));
                 _GhostBodyMaterial.SetFloat(Shader.PropertyToID("_Dissolve"), valueDissolveGhostBody + _dissolveSpeed);
@@ -78,7 +78,7 @@ public class GhostController : MonoBehaviour
 
         if (_ExitedTriggerWall)
         {
-            if (_GhostBodyMaterial.GetFloat(Shader.PropertyToID("_Dissolve")) > 0.0f || _GhostEyeMaterial.GetFloat(Shader.PropertyToID("_Dissolve")) > 0.0f)
+            if (_GhostBodyMaterial.GetFloat(Shader.PropertyToID("_Dissolve")) > 0.0f)
             {
                 float valueDissolveGhostBody = _GhostBodyMaterial.GetFloat(Shader.PropertyToID("_Dissolve"));
                 _GhostBodyMaterial.SetFloat(Shader.PropertyToID("_Dissolve"), valueDissolveGhostBody - _dissolveSpeed);
