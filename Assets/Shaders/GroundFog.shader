@@ -1,4 +1,4 @@
-Shader"P8_Shaders/Unlit/Ground_Dissolve"
+Shader "P8_Shaders/Lit/Ground_Dissolve"
 {
     Properties
     {   
@@ -23,6 +23,7 @@ Shader"P8_Shaders/Unlit/Ground_Dissolve"
             #pragma fragment frag
 
             #include "UnityCG.cginc"
+            #include "UnityLightingCommon.cginc"
 			
 sampler2D _Albedo, _Noise;
 float _DistanceThreshold;
@@ -34,6 +35,7 @@ float4 _BorderColor;
 struct vertexInput
 {
     float4 vertex : POSITION;
+    float3 normal : NORMAL;
     float2 uv : TEXCOORD0;
 };
 			
@@ -42,6 +44,7 @@ struct v2f
     float4 vertex : SV_POSITION;
     float2 uv : TEXCOORD0;
     float3 worldSpacePos : TEXCOORD1;
+    float3 worldSpaceNormal : TEXCOORD2;
 };
 
 v2f vert (vertexInput v)
@@ -50,11 +53,14 @@ v2f vert (vertexInput v)
     o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
     o.uv = v.uv;
     o.worldSpacePos = mul(unity_ObjectToWorld, v.vertex).xyz;
+    o.worldSpaceNormal = normalize(mul(unity_ObjectToWorld, float4(v.normal, 0)).xyz);
     return o;
 }
 
 float4 frag(v2f i) : SV_Target
 {
+
+    // computing noised border
     float3 playerToBorder = normalize(i.worldSpacePos - WS_PlayerPosition) * _NoiseFrequency;
     float distanceOffsetNoise = (tex2D(_Noise, WS_PlayerPosition.xz / (_NoiseSpeedReduction * _NoiseSpeedReduction) + playerToBorder.xz).r - 0.5) +
                                 (tex2D(_Noise, WS_PlayerPosition.xz / _NoiseSpeedReduction + playerToBorder.xz * _NoiseSubFractalPower).r - 0.5) / 2 +
@@ -65,7 +71,13 @@ float4 frag(v2f i) : SV_Target
         discard;
     float isInside = step(distPlayerFragment, maxDistance);
     float isBorder = step(distPlayerFragment, maxDistance + _BorderWidth);
-    return isInside * tex2D(_Albedo, i.uv) + isBorder * (1-isInside) * _BorderColor;
+    
+    // lighting
+    float3 N = normalize(i.worldSpaceNormal);
+    float receivedLight = saturate(dot(N, _WorldSpaceLightPos0.xyz));
+    
+    return isInside * float4(receivedLight, receivedLight, receivedLight, 1) * _LightColor0 * tex2D(_Albedo, i.uv) + isBorder * (1 - isInside) * _BorderColor;
+    //return float4(N, 1);
 }
             
             ENDHLSL
