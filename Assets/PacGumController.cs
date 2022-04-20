@@ -7,7 +7,8 @@ public class PacGumController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Debug.Log("Pacgumstart");
+        GameManager.instance.pacGumMaxNumber++;
     }
 
     // Update is called once per frame
@@ -22,11 +23,7 @@ public class PacGumController : MonoBehaviour
         {
             Debug.Log("Player");
             gameObject.SetActive(false);
+            GameManager.instance.pacGumCollectedNumber++;
         }
-    }
-
-    private void OnDisable()
-    {
-        //TODO: Add counting sphere
     }
 }
