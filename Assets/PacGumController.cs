@@ -21,6 +21,7 @@ public class PacGumController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Player");
+            gameObject.SetActive(false);
         }
     }
 
