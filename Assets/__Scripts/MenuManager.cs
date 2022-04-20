@@ -11,6 +11,7 @@ public class MenuManager : MonoBehaviour
 {
     [SerializeField] GameObject escapeMenu;
     [SerializeField] TextMeshProUGUI textDisplayer;
+    [SerializeField] TextMeshProUGUI counterDisplayer;
 
     public static MenuManager instance;
 
@@ -57,6 +58,11 @@ public class MenuManager : MonoBehaviour
         textDisplayer.text = msg;
         textDisplayer.gameObject.SetActive(true);
         StartCoroutine(HideTextAfterTwoSecondAndResetScene());
+    }
+
+    public void UpdateCounter(string str)
+    {
+        counterDisplayer.text = str;
     }
 
     IEnumerator HideTextAfterTwoSecondAndResetScene()
