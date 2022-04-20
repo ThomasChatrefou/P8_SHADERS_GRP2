@@ -40,11 +40,13 @@ public class ThirdPersonMovement : MonoBehaviour
             Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             _controller.Move(moveDirection.normalized * _speed * Time.deltaTime);
 
-            SoundManager.instance.playMovingSound(_movingSound);
+            if (SoundManager.instance != null)
+                SoundManager.instance.playMovingSound(_movingSound);
         }
         else
         {
-            SoundManager.instance.stopMovingSound();
+            if (SoundManager.instance != null)
+                SoundManager.instance.stopMovingSound();
         }
 
         if (transform.position.y > 1.01f)
