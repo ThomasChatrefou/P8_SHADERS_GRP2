@@ -49,7 +49,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Dissolve: 0
-    - _Fresnel_Power: 2
+    - _Fresnel_Power: 0.5
     - _InteriorSpread: 1
     - _QueueControl: 0
     - _QueueOffset: 0

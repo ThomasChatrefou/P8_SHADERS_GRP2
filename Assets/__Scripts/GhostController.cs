@@ -39,7 +39,6 @@ public class GhostController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(_spawnPoint.transform);
         if (_IsGoingBackToSpawn)
         {
             if (Vector3.Distance(transform.position, _spawnPoint.transform.position) >= _minDistance)
@@ -70,8 +69,6 @@ public class GhostController : MonoBehaviour
             {
                 float valueDissolveGhostBody = _GhostBodyMaterial.GetFloat(Shader.PropertyToID("_Dissolve"));
                 _GhostBodyMaterial.SetFloat(Shader.PropertyToID("_Dissolve"), valueDissolveGhostBody + _dissolveSpeed);
-                float valueDissolveGhostEye = _GhostEyeMaterial.GetFloat(Shader.PropertyToID("_Dissolve"));
-                _GhostEyeMaterial.SetFloat(Shader.PropertyToID("_Dissolve"), valueDissolveGhostEye + _dissolveSpeed);
             }
             else
             {
@@ -85,14 +82,11 @@ public class GhostController : MonoBehaviour
             {
                 float valueDissolveGhostBody = _GhostBodyMaterial.GetFloat(Shader.PropertyToID("_Dissolve"));
                 _GhostBodyMaterial.SetFloat(Shader.PropertyToID("_Dissolve"), valueDissolveGhostBody - _dissolveSpeed);
-                float valueDissolveGhostEye = _GhostEyeMaterial.GetFloat(Shader.PropertyToID("_Dissolve"));
-                _GhostEyeMaterial.SetFloat(Shader.PropertyToID("_Dissolve"), valueDissolveGhostEye - _dissolveSpeed);
             }
             else
             {
                 _ExitedTriggerWall = false;
                 _GhostBodyMaterial.SetFloat(Shader.PropertyToID("_StartDissolve"), 0);
-                _GhostEyeMaterial.SetFloat(Shader.PropertyToID("_StartDissolve"), 0);
             }
         }
 
@@ -103,12 +97,11 @@ public class GhostController : MonoBehaviour
         if (other.CompareTag("Wall"))
         {
             _GhostBodyMaterial.SetFloat(Shader.PropertyToID("_StartDissolve"), 1);
-            _GhostEyeMaterial.SetFloat(Shader.PropertyToID("_StartDissolve"), 1);
             _EnteredTriggerWall = true;
             _ExitedTriggerWall = false;
         }
 
-        if (other.tag == "Player" && !_IsGoingBackToSpawn)
+        if (other.CompareTag("Player") && !_IsGoingBackToSpawn)
         {
             _IsGoingBackToSpawn = true;
             _moveSpeed *= _multiplicationCoefficient;
