@@ -12,6 +12,7 @@ Shader "P8_Shaders/Lit/Ground_Dissolve"
         _NoiseSpeedReduction("Noise Speed Reduction", Range(1, 10)) = 5
         _BorderWidth("Border Width", Range(0.001, 10)) = 2
         [HDR]_BorderColor("Border Color", Color) = (4.5, 4.5, 5, 1)
+        _TextureScale("Texture Scale", Range(0.001, 1)) = 0.1
     }
     
     SubShader
@@ -21,9 +22,9 @@ Shader "P8_Shaders/Lit/Ground_Dissolve"
 			HLSLPROGRAM
             #pragma vertex vert  
             #pragma fragment frag
-
-            #include "UnityCG.cginc"
-            #include "UnityLightingCommon.cginc"
+#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
+            //#include "UnityCG.cginc"
+            //#include "UnityLightingCommon.cginc"
 			
 sampler2D _Albedo, _Noise;
 float _DistanceThreshold;
@@ -31,6 +32,7 @@ float3 WS_PlayerPosition;
 float _NoiseFrequency, _NoiseWidth, _NoiseSubFractalPower, _NoiseSpeedReduction;
 float _BorderWidth, _BorderEmissionPower;
 float4 _BorderColor;
+float _TextureScale;
 
 struct vertexInput
 {
@@ -74,9 +76,9 @@ float4 frag(v2f i) : SV_Target
     
     // lighting
     float3 N = normalize(i.worldSpaceNormal);
-    float receivedLight = saturate(dot(N, _WorldSpaceLightPos0.xyz));
+	float receivedLight = saturate(dot(N, GetMainLight().direction.xyz));
     
-    return isInside * float4(receivedLight, receivedLight, receivedLight, 1) * _LightColor0 * tex2D(_Albedo, i.uv) + isBorder * (1 - isInside) * _BorderColor;
+	return isInside * float4(receivedLight, receivedLight, receivedLight, 1) * float4(GetMainLight().color, 1) * tex2D(_Albedo, _TextureScale * i.worldSpacePos.xz) + isBorder * (1 - isInside) * _BorderColor;
     //return float4(N, 1);
 }
             
