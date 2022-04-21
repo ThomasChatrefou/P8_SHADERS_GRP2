@@ -1,14 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class SoundManager : MonoBehaviour
 {
 
     [SerializeField] AudioSource movingSoundSpeaker;
     [SerializeField] AudioSource soundSpeaker;
-    [SerializeField] AudioClip beginningSound;
 
     public static SoundManager instance;
 
@@ -21,28 +19,6 @@ public class SoundManager : MonoBehaviour
         else
         {
             instance = this;
-        }
-    }
-
-    void Start()
-    {
-        if (beginningSound)
-        {
-            playSound(beginningSound);
-            StartCoroutine(delayStartGame());
-        }
-    }
-
-    IEnumerator delayStartGame()
-    {
-        Time.timeScale = 0;
-        List<InputAction> enabledAction = InputSystem.ListEnabledActions();
-        InputSystem.DisableAllEnabledActions();
-        yield return new WaitForSecondsRealtime(beginningSound.length);
-        Time.timeScale = 1;
-        foreach(InputAction action in enabledAction)
-        {
-            action.Enable();
         }
     }
 

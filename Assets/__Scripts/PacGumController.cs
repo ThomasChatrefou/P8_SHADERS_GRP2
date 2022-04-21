@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class PacGumController : MonoBehaviour
 {
+    [SerializeField] AudioClip pickupSound;
+    private void Awake()
+    {
+        
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Pacgumstart");
-        GameManager.instance.pacGumMaxNumber++;
+        GameManager.instance.AddingMaxPacGum();
     }
 
     // Update is called once per frame
@@ -21,7 +26,7 @@ public class PacGumController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player");
+            SoundManager.instance.playSound(pickupSound);
             gameObject.SetActive(false);
             GameManager.instance.PickedUpPacGum();
         }
