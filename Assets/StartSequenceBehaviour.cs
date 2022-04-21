@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class StartSequenceBehaviour : MonoBehaviour
 {
@@ -18,25 +17,13 @@ public class StartSequenceBehaviour : MonoBehaviour
 
     [SerializeField] AudioClip startSequenceAudio;
 
-    private List<InputAction> enabledActions;
-    private GhostController[] ghosts;
-
     // Start is called before the first frame update
     void Start()
     {
         mainCamera.gameObject.SetActive(false);
         startSequenceCamera.gameObject.SetActive(true);
         SoundManager.instance.playSound(startSequenceAudio);
-        //Time.timeScale = 0;
-        enabledActions = InputSystem.ListEnabledActions();
-        InputSystem.DisableAllEnabledActions();
-        wallsMaterial.SetFloat("DistThresholdDown", 50);
-        wallsMaterial.SetFloat("DistThresholdUp", 50);
-        ghosts = FindObjectsOfType<GhostController>();
-        foreach(GhostController ghost in ghosts)
-        {
-            ghost.enabled = false;
-        }
+        GameManager.instance.Pause();
     }
 
     // Update is called once per frame
@@ -55,15 +42,7 @@ public class StartSequenceBehaviour : MonoBehaviour
             mainCamera.gameObject.SetActive(true);
             Destroy(startSequenceCamera.gameObject);
             Destroy(gameObject);
-            //Time.timeScale = 1;
-            foreach (InputAction action in enabledActions)
-            {
-                action.Enable();
-            }
-            foreach (GhostController ghost in ghosts)
-            {
-                ghost.enabled = true;
-            }
+            GameManager.instance.Resume();
         }
     }
 }
