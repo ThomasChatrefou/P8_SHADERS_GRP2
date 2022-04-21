@@ -1,4 +1,4 @@
-Shader "P8_Shaders/Lit/Chomp"
+Shader"P8_Shaders/Lit/Chomp"
 {
     Properties
     {   
@@ -6,6 +6,7 @@ Shader "P8_Shaders/Lit/Chomp"
         _Albedo("Albedo", 2D) = "white" {}
         _AmbientOcclusionMap("Ambient Occlusion Map", 2D) = "white" {}
         _MetallicSmoothnessMap("Metallic Smoothness Map", 2D) = "white" {}
+        [HDR]_DamagedColor("Damaged Color", Color) = (1, 0, 0, 0)
     }
     
     SubShader
@@ -20,7 +21,7 @@ Shader "P8_Shaders/Lit/Chomp"
             #include "UnityLightingCommon.cginc"
             
             sampler2D _Albedo, _NormalMap, _AmbientOcclusionMap, _MetallicSmoothnessMap;
-            
+            float4 _DamagedColor;
             float _ColorMultiplier;
 			
 			struct vertexInput
@@ -57,9 +58,9 @@ Shader "P8_Shaders/Lit/Chomp"
                 float4 light = isDirectionalLightShinier * float4(receivedLight, receivedLight, receivedLight, 1) * _LightColor0
                             + (1 - isDirectionalLightShinier) * float4(ao.xyz, 1) * UNITY_LIGHTMODEL_AMBIENT;
                 
-                float colorMultiplier = saturate(_ColorMultiplier);
-                
-                return tex2D(_Albedo, i.uv) * light * float4(colorMultiplier, colorMultiplier, colorMultiplier, 1);
+                float colorMultiplier = 1 - saturate(_ColorMultiplier);
+    
+	            return tex2D(_Albedo, i.uv) * light * lerp(float4(1,1,1,1), _DamagedColor, colorMultiplier);
 }
             
             ENDHLSL

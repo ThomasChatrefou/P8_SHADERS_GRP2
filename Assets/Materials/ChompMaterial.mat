@@ -38,6 +38,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ColorMultiplier: 0.99979657
-    m_Colors: []
+    - _ColorMultiplier: 0.96697736
+    m_Colors:
+    - _ColorMultiplier: {r: 1.9245284, g: 0, b: 0, a: 1}
+    - _DamagedColor: {r: 1.5365998, g: 0, b: 0, a: 0.5882353}
   m_BuildTextureStacks: []

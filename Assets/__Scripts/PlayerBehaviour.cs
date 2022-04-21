@@ -9,6 +9,7 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] Material chompMat;
     [SerializeField] AudioClip damageSound;
     [SerializeField] AudioClip deathSound;
+    [SerializeField] CameraShaker cameraShaker;
 
     private int life;
 
@@ -36,6 +37,8 @@ public class PlayerBehaviour : MonoBehaviour
         else
         {
             SoundManager.instance.playSound(damageSound);
+            if(cameraShaker != null)
+                cameraShaker.Shake();
         }
     }
 }
