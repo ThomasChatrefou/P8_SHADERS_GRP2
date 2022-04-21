@@ -22,9 +22,8 @@ Shader "P8_Shaders/Lit/Ground_Dissolve"
 			HLSLPROGRAM
             #pragma vertex vert  
             #pragma fragment frag
+
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
-            //#include "UnityCG.cginc"
-            //#include "UnityLightingCommon.cginc"
 			
 sampler2D _Albedo, _Noise;
 float _DistanceThreshold;

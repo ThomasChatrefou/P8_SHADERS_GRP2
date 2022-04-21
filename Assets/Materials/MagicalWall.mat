@@ -65,8 +65,8 @@ Material:
     - _OcclusionTransparency: 0.17
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Threshold_Cube_Down: 41.43104
-    - _Threshold_Cube_Up: 42.019634
+    - _Threshold_Cube_Down: 7.5
+    - _Threshold_Cube_Up: 11
     - _TransparencyAngle: 3.4
     - _VerticalSpeed: 0.4
     - _Vertical_Speed: 0.3

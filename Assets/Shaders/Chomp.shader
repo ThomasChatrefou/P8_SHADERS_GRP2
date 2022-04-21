@@ -20,8 +20,7 @@ Shader "P8_Shaders/Lit/Chomp"
             #pragma vertex vert  
             #pragma fragment frag
 
-            #include "UnityCG.cginc"
-            #include "UnityLightingCommon.cginc"
+#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
             
             sampler2D _Albedo, _NormalMap, _AmbientOcclusionMap, _MetallicSmoothnessMap;
             float4 _Color;
@@ -57,15 +56,15 @@ Shader "P8_Shaders/Lit/Chomp"
             {
                 // lighting
                 float3 N = normalize(i.worldSpaceNormal);
-                float receivedLight = saturate(dot(N, _WorldSpaceLightPos0.xyz));
+	            float receivedLight = saturate(dot(N, GetMainLight().direction.xyz));
                 float4 ao = tex2D(_AmbientOcclusionMap, i.uv);
-                float4 light = float4(receivedLight, receivedLight, receivedLight, 1) * _LightColor0
-                            + float4(ao.xyz * ShadeSH9(half4(i.worldSpaceNormal, 1)), 1);
+	            float4 light = float4(receivedLight, receivedLight, receivedLight, 1) * float4(GetMainLight().color, 1)
+                            + float4(ao.xyz * SampleSH(half4(i.worldSpaceNormal, 1)), 1);
                 
                 float colorMultiplier = 1 - saturate(_ColorMultiplier);
     
 	            return tex2D(_Albedo, i.uv) * light * _Color
-                    * lerp(float4(1,1,1,1), _DamagedColor, colorMultiplier)
+                    * lerp(float4(1, 1, 1, 1), _DamagedColor, colorMultiplier)
                     * lerp(float4(1, 1, 1, 1), _EmissiveGumColor, _PercentPickedGum);
 }
             
