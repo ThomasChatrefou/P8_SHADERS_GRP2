@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 
 [RequireComponent(typeof(CharacterController))]
+[ExecuteInEditMode]
 public class ThirdPersonMovement : MonoBehaviour
 {
     private InputMaster _controls;
