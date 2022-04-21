@@ -15,7 +15,8 @@ public class GameManager : MonoBehaviour
 
     private List<InputAction> enabledActions;
     private GhostController[] ghosts;
-    [SerializeField] CinemachineBrain cinemachineBrain;
+    [SerializeField] CinemachineFreeLook cinemachineFreeLook;
+    private float cinemachineXAxisSpeed = 150;
 
     [SerializeField] AudioClip winSound;
 
@@ -68,7 +69,8 @@ public class GameManager : MonoBehaviour
         {
             ghost.enabled = false;
         }
-        cinemachineBrain.enabled = false;
+        cinemachineXAxisSpeed = cinemachineFreeLook.m_XAxis.m_MaxSpeed;
+        cinemachineFreeLook.m_XAxis.m_MaxSpeed = 0;
     }
 
     public void Resume()
@@ -81,6 +83,6 @@ public class GameManager : MonoBehaviour
         {
             ghost.enabled = true;
         }
-        cinemachineBrain.enabled = true;
+        cinemachineFreeLook.m_XAxis.m_MaxSpeed = cinemachineXAxisSpeed;
     }
 }

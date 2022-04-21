@@ -1,4 +1,4 @@
-Shader "P8_Shaders/Lit/Ground_Dissolve"
+Shader "P8_Shaders/Unlit/Ground_Dissolve"
 {
     Properties
     {   
@@ -17,15 +17,15 @@ Shader "P8_Shaders/Lit/Ground_Dissolve"
     SubShader
     {
     
-        Tags {"RenderType"="Opaque"}
-        Tags { "RenderPipeline" = "UniversalRenderPipeline" }
+        //Tags {"RenderType"="Opaque"}
+        //Tags { "RenderPipeline" = "UniversalRenderPipeline" }
     
 		Pass
         {
             //Tags {"LightMode"="ForwardBase"}
                 
 			CGPROGRAM
-            #pragma vertex vert fullforwardshadows
+            #pragma vertex vert  
             #pragma fragment frag
             //#pragma multi_compile_shadowcaster
 
@@ -81,11 +81,9 @@ float4 frag(v2f i) : SV_Target
     
     // lighting
     float3 N = normalize(i.worldSpaceNormal);
-    float3 L = _WorldSpaceLightPos0.xyz;
-    float receivedLight = saturate(dot(N, L));
-    float4 light = float4(receivedLight, receivedLight, receivedLight, 1) * _LightColor0 + float4(ShadeSH9(half4(i.worldSpaceNormal, 1)), 1);
+    float receivedLight = saturate(dot(N, _WorldSpaceLightPos0.xyz));
     
-    return isInside * light * tex2D(_Albedo, i.uv) + isBorder * (1 - isInside) * _BorderColor;
+    return isInside /* * float4(receivedLight, receivedLight, receivedLight, 1) * _LightColor0*/ * tex2D(_Albedo, i.uv) + isBorder * (1 - isInside) * _BorderColor;
     //return float4(N, 1);
 }
             
