@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class GameManager : MonoBehaviour
 
     private List<InputAction> enabledActions;
     private GhostController[] ghosts;
+    [SerializeField] CinemachineBrain cinemachineBrain;
+
+    [SerializeField] AudioClip winSound;
 
     private void Awake()
     {
@@ -48,6 +52,7 @@ public class GameManager : MonoBehaviour
     }
     private void Win()
     {
+        SoundManager.instance.playSound(winSound);
         MenuManager.instance.DisplayMessageAndReset("You won!");
     }
 
@@ -60,6 +65,7 @@ public class GameManager : MonoBehaviour
         {
             ghost.enabled = false;
         }
+        cinemachineBrain.enabled = false;
     }
 
     public void Resume()
@@ -72,5 +78,6 @@ public class GameManager : MonoBehaviour
         {
             ghost.enabled = true;
         }
+        cinemachineBrain.enabled = true;
     }
 }

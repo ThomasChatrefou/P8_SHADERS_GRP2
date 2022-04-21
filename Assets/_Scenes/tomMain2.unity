@@ -14331,7 +14331,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.41672277, y: 2.6463712e-10, z: 1.2239999e-10, w: 0.90903366}
+  m_LocalRotation: {x: 0.41672277, y: -2.1669729e-11, z: -1.0108811e-11, w: 0.90903366}
   m_LocalPosition: {x: 0, y: 21, z: -16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -25071,7 +25071,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 611558249}
-  m_LocalRotation: {x: 0.40016302, y: 0.00000003375969, z: -0.000000014741087, w: 0.916444}
+  m_LocalRotation: {x: 0.40016305, y: 0.000000027312156, z: -0.0000000119257875, w: 0.91644394}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -35338,7 +35338,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 845164588}
-  m_LocalRotation: {x: 0.4167228, y: 3.231776e-16, z: -2.958598e-16, w: 0.9090336}
+  m_LocalRotation: {x: 0.4167228, y: -3.231776e-16, z: 2.958598e-16, w: 0.9090336}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -76408,6 +76408,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8915549506659006730, guid: 0c60b20b008bc3f4b8c4755039d1992d,
+        type: 3}
+      propertyPath: cinemachineBrain
+      value: 
+      objectReference: {fileID: 330585549}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c60b20b008bc3f4b8c4755039d1992d, type: 3}
 --- !u!4 &1984100352 stripped
@@ -83078,6 +83083,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 778476003, guid: 1edc73cc1721bd0428340ae4d373d7fd, type: 3}
+      propertyPath: initLife
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 778476003, guid: 1edc73cc1721bd0428340ae4d373d7fd, type: 3}
       propertyPath: damageSound
       value: 

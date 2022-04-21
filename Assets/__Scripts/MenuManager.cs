@@ -70,7 +70,7 @@ public class MenuManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         textDisplayer.gameObject.SetActive(true);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         GameManager.instance.Resume();
     }
 
