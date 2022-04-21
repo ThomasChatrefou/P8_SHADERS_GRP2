@@ -52,16 +52,33 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AngularSpeed: 0.26
-    - _DistThresholdDown: 8
-    - _DistThresholdUp: 11
-    - _EffectRange: 66.1
+    - _AngularSpeed: 0.8
+    - _Angular_Speed: 1
+    - _DistThresholdDown: 37.094345
+    - _DistThresholdUp: 37.898506
+    - _Distance_Threshold_Cube_Down: 5
+    - _Distance_Threshold_Cube_Up: 10
+    - _EffectRange: 70
+    - _Effect_Range: 50
     - _Height: 7
-    - _Horizontal_Speed: 0.62
+    - _Horizontal_Speed: 0.6
+    - _OcclusionTransparency: 0.17
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _VerticalSpeed: 0.46
+    - _Threshold_Cube_Down: 7.5
+    - _Threshold_Cube_Up: 11
+    - _TransparencyAngle: 3.4
+    - _VerticalSpeed: 0.4
+    - _Vertical_Speed: 0.3
     - _Width: 5
     m_Colors:
+    - _HeightOscillationRange: {r: 1, g: 3, b: 0, a: 0}
+    - _HeightRange: {r: 1, g: 12, b: 0, a: 0}
+    - _Height_Oscillation_Range: {r: 1, g: 3, b: 0, a: 0}
+    - _Height_Range: {r: 1, g: 12, b: 0, a: 0}
     - _PlayerPosition: {r: 4.2280717, g: 1.0833334, b: 8.5, a: 0}
+    - _WidthOscillationRange: {r: 1, g: 3, b: 0, a: 0}
+    - _WidthRange: {r: 1, g: 5, b: 0, a: 0}
+    - _Width_Oscillation_Range: {r: 1, g: 3, b: 0, a: 0}
+    - _Width_Range: {r: -5, g: 5, b: 0, a: 0}
   m_BuildTextureStacks: []

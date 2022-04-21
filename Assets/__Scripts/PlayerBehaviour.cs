@@ -8,6 +8,7 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] AnimationCurve flashingSequence;
     [SerializeField] Material chompMat;
     [SerializeField] AudioClip deathSound;
+    [SerializeField] CameraShaker cameraShaker;
 
     private int life;
 
@@ -27,6 +28,9 @@ public class PlayerBehaviour : MonoBehaviour
     public void Damage()
     {
         life--;
+	if(cameraShaker != null)
+                cameraShaker.Shake();
+        }
         if(life <= 0)
         {
             SoundManager.instance.playSound(deathSound);
