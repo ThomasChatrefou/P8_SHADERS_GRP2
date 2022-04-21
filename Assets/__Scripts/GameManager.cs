@@ -18,12 +18,6 @@ public class GameManager : MonoBehaviour
         pacGumMaxNumber = 0;
         pacGumCollectedNumber = 0;
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        MenuManager.instance.UpdateCounter(pacGumCollectedNumber.ToString() + " / " + pacGumMaxNumber.ToString());
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -33,14 +27,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void AddingMaxPacGum()
+    {
+        pacGumMaxNumber++;
+        CallUpdateCounter();
+    }
+
     public void PickedUpPacGum()
     {
         pacGumCollectedNumber++;
+        CallUpdateCounter();
+    }
+
+    public void CallUpdateCounter()
+    {
         MenuManager.instance.UpdateCounter(pacGumCollectedNumber.ToString() + " / " + pacGumMaxNumber.ToString());
     }
     private void Win()
     {
-        Debug.Log("Win!");
-        //TODO: Win
+        MenuManager.instance.DisplayMessageAndReset("You won!");
     }
 }
