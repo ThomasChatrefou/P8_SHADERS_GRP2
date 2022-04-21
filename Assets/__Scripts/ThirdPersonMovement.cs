@@ -21,7 +21,6 @@ public class ThirdPersonMovement : MonoBehaviour
     private void Awake()
     {
         _controls = new InputMaster();
-        _controls.Player.Shoot.performed += context => Shoot();
         _move = _controls.Player.Movement;
         _controller = GetComponent<CharacterController>();
     }
@@ -52,11 +51,6 @@ public class ThirdPersonMovement : MonoBehaviour
 
         if (transform.position.y > 1.01f)
             transform.position = new Vector3(transform.position.x, 1f, transform.position.z);
-    }
-
-    private void Shoot()
-    {
-        print("shoot");
     }
 
     private void OnEnable()

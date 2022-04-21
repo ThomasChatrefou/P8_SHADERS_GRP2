@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +13,14 @@ public class GameManager : MonoBehaviour
     public int pacGumCollectedNumber;
     public int pacGumMaxNumber;
 
+    private List<InputAction> enabledActions;
+    private GhostController[] ghosts;
+    [SerializeField] CinemachineFreeLook cinemachineFreeLook;
+    private float cinemachineXAxisSpeed = 150;
+
+    [SerializeField] AudioClip winSound;
+
+    private bool hasWon = false;
 
     private void Awake()
     {
@@ -21,7 +31,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (pacGumCollectedNumber == pacGumMaxNumber && pacGumCollectedNumber > 0)
+        if (pacGumCollectedNumber == pacGumMaxNumber && pacGumCollectedNumber > 0 && !hasWon)
         {
             Win();
         }
@@ -45,6 +55,34 @@ public class GameManager : MonoBehaviour
     }
     private void Win()
     {
+        hasWon = true;
+        SoundManager.instance.playSound(winSound);
         MenuManager.instance.DisplayMessageAndReset("You won!");
+    }
+
+    public void Pause()
+    {
+        enabledActions = InputSystem.ListEnabledActions();
+        InputSystem.DisableAllEnabledActions();
+        ghosts = FindObjectsOfType<GhostController>();
+        foreach (GhostController ghost in ghosts)
+        {
+            ghost.enabled = false;
+        }
+        cinemachineXAxisSpeed = cinemachineFreeLook.m_XAxis.m_MaxSpeed;
+        cinemachineFreeLook.m_XAxis.m_MaxSpeed = 0;
+    }
+
+    public void Resume()
+    {
+        foreach (InputAction action in enabledActions)
+        {
+            action.Enable();
+        }
+        foreach (GhostController ghost in ghosts)
+        {
+            ghost.enabled = true;
+        }
+        cinemachineFreeLook.m_XAxis.m_MaxSpeed = cinemachineXAxisSpeed;
     }
 }

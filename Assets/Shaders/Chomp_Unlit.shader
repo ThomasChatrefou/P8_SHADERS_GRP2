@@ -1,4 +1,4 @@
-Shader "P8_Shaders/Lit/Chomp"
+Shader"P8_Shaders/Lit/Chomp"
 {
     Properties
     {   
@@ -6,10 +6,7 @@ Shader "P8_Shaders/Lit/Chomp"
         _Albedo("Albedo", 2D) = "white" {}
         _AmbientOcclusionMap("Ambient Occlusion Map", 2D) = "white" {}
         _MetallicSmoothnessMap("Metallic Smoothness Map", 2D) = "white" {}
-        [HDR]_Color("Color Tint", Color) = (1, 1, 1, 1)
         [HDR]_DamagedColor("Damaged Color", Color) = (1, 0, 0, 0)
-        [HDR]_EmissiveGumColor("Emissive Gum Color", Color) = (1,1,0,1)
-        //_PercentPickedGum("Percent Picked Gum", Range(0, 1)) = 0
     }
     
     SubShader
@@ -24,11 +21,8 @@ Shader "P8_Shaders/Lit/Chomp"
             #include "UnityLightingCommon.cginc"
             
             sampler2D _Albedo, _NormalMap, _AmbientOcclusionMap, _MetallicSmoothnessMap;
-            float4 _Color;
             float4 _DamagedColor;
             float _ColorMultiplier;
-            float _PercentPickedGum;
-            float4 _EmissiveGumColor;
 			
 			struct vertexInput
             {
@@ -59,14 +53,14 @@ Shader "P8_Shaders/Lit/Chomp"
                 float3 N = normalize(i.worldSpaceNormal);
                 float receivedLight = saturate(dot(N, _WorldSpaceLightPos0.xyz));
                 float4 ao = tex2D(_AmbientOcclusionMap, i.uv);
-                float4 light = float4(receivedLight, receivedLight, receivedLight, 1) * _LightColor0
-                            + float4(ao.xyz * ShadeSH9(half4(i.worldSpaceNormal, 1)), 1);
+                float ambientPower = (UNITY_LIGHTMODEL_AMBIENT.r + UNITY_LIGHTMODEL_AMBIENT.g + UNITY_LIGHTMODEL_AMBIENT.b) / 3;
+                float isDirectionalLightShinier = step(ao.r * ambientPower, receivedLight);
+                float4 light = isDirectionalLightShinier * float4(receivedLight, receivedLight, receivedLight, 1) * _LightColor0
+                            + (1 - isDirectionalLightShinier) * float4(ao.xyz, 1) * UNITY_LIGHTMODEL_AMBIENT;
                 
                 float colorMultiplier = 1 - saturate(_ColorMultiplier);
     
-	            return tex2D(_Albedo, i.uv) * light * _Color
-                    * lerp(float4(1,1,1,1), _DamagedColor, colorMultiplier)
-                    * lerp(float4(1, 1, 1, 1), _EmissiveGumColor, _PercentPickedGum);
+	            return tex2D(_Albedo, i.uv) /* * light */ * lerp(float4(1,1,1,1), _DamagedColor, colorMultiplier);
 }
             
             ENDHLSL

@@ -171,24 +171,24 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -0.009503222
+      outSlope: -0.009503222
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.11449077
-      value: 1
-      inSlope: 0.04596106
-      outSlope: 0.04596106
+      time: 0.24365643
+      value: 0.9976845
+      inSlope: -0.000006941203
+      outSlope: -0.000006941203
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.7317073
+      outWeight: 0.8530041
     - serializedVersion: 3
-      time: 0.18455228
-      value: 0.38972855
+      time: 0.49532804
+      value: 0.0012550354
       inSlope: -0.00004484653
       outSlope: -0.00004484653
       tangentMode: 0
@@ -196,26 +196,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.45794404
     - serializedVersion: 3
-      time: 0.275974
-      value: 1
-      inSlope: 0.0000010110332
-      outSlope: 0.0000010110332
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.6448598
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.4801777
-      value: 1.0000001
-      inSlope: 0.00000016464782
-      outSlope: 0.00000016464782
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.57245386
-      value: 0.6795478
+      time: 0.76385957
+      value: 1.0013224
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -223,19 +205,10 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.6703003
-      value: 1.0030495
-      inSlope: -0.017840462
-      outSlope: -0.017840462
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.11786165
-    - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: -0.009249304
-      outSlope: -0.009249304
+      inSlope: -0.0056000096
+      outSlope: -0.0056000096
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -244,5 +217,5 @@ MonoBehaviour:
     m_PostInfinity: 1
     m_RotationOrder: 4
   chompMat: {fileID: 2100000, guid: a7c27e95f1d7c624780d21743d36717c, type: 2}
-  damageSound: {fileID: 0}
   deathSound: {fileID: 8300000, guid: 634a7a187496fbd41997daed7ee7c9c5, type: 3}
+  cameraShaker: {fileID: 0}

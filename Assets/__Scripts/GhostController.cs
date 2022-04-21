@@ -9,6 +9,8 @@ public class GhostController : MonoBehaviour
     [SerializeField] private float _dissolveSpeed = 0.005f;
     [SerializeField] private int _multiplicationCoefficient = 4;
     [SerializeField] public GameObject _spawnPointToInstantiate;
+    [SerializeField] AudioClip attackedSound;
+    [SerializeField] AudioSource speaker;
 
     public GameObject GhostBody;
     private Material _GhostBodyMaterial;
@@ -107,6 +109,8 @@ public class GhostController : MonoBehaviour
             _GhostBodyMaterial.SetFloat(Shader.PropertyToID("_WobbleSpeed"), _GhostWobbleSpeedValue);
             _GhostEyeMaterial.SetFloat(Shader.PropertyToID("_WobbleSpeed"), _GhostWobbleSpeedValue);
             other.GetComponent<PlayerBehaviour>().Damage();
+            speaker.clip = attackedSound;
+            speaker.Play();
         }
     }
 

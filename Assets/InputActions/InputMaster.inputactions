@@ -6,15 +6,6 @@
             "id": "1eb380b6-a6b1-419a-8b6c-51e129fe2f65",
             "actions": [
                 {
-                    "name": "Shoot",
-                    "type": "Button",
-                    "id": "55f3fb45-365c-457c-afaa-3d00e1d73a4a",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Movement",
                     "type": "Button",
                     "id": "0b45e2bd-7e63-4614-b7b1-5a609cb66574",
@@ -43,28 +34,6 @@
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "af7caa03-4109-414a-aeec-5b71729fbb22",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "Keyboard and mouse",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0d5139f0-7e99-4f28-8ec6-54accade14b0",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "WSAD Keys",
                     "id": "094a741a-12be-4dad-be35-c43d6e5373a2",
