@@ -39,7 +39,7 @@ public class StartSequenceBehaviour : MonoBehaviour
         transform.rotation = Quaternion.AngleAxis(cameraColatitude.Evaluate(t), Vector3.up) * Quaternion.AngleAxis(cameraLongitude.Evaluate(t), Vector3.right);
         wallsMaterial.SetFloat("_Threshold_Cube_Down", wallsDistThresholdDown.Evaluate(t));
         wallsMaterial.SetFloat("_Threshold_Cube_Up", wallsDistThresholdUp.Evaluate(t));
-        if (Time.time >= startSequenceAudio.length)
+        if (Time.time - startTime >= startSequenceAudio.length)
         {
             startSequenceCamera.gameObject.SetActive(false);
             mainCamera.gameObject.SetActive(true);

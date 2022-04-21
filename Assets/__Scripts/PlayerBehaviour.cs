@@ -28,7 +28,8 @@ public class PlayerBehaviour : MonoBehaviour
     public void Damage()
     {
         life--;
-	if(cameraShaker != null)
+	    if(cameraShaker != null)
+        {
                 cameraShaker.Shake();
         }
         if(life <= 0)

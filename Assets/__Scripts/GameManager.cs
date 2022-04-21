@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] AudioClip winSound;
 
+    private bool hasWon = false;
+
     private void Awake()
     {
         instance = this;
@@ -28,7 +30,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (pacGumCollectedNumber == pacGumMaxNumber && pacGumCollectedNumber > 0)
+        if (pacGumCollectedNumber == pacGumMaxNumber && pacGumCollectedNumber > 0 && !hasWon)
         {
             Win();
         }
@@ -52,6 +54,7 @@ public class GameManager : MonoBehaviour
     }
     private void Win()
     {
+        hasWon = true;
         SoundManager.instance.playSound(winSound);
         MenuManager.instance.DisplayMessageAndReset("You won!");
     }

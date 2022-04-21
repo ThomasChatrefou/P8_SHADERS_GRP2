@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 #if UNITY_DEBUG
 using UnityEditor;
 #endif
@@ -31,17 +33,15 @@ public class MenuManager : MonoBehaviour
     {
         escapeMenu.SetActive(false);
         textDisplayer.gameObject.SetActive(false);
-    }
-
-    private void Update()
-    {
+        Cursor.visible = false;
     }
 
     public void OnEscape()
     {
-        Debug.Log("escape");
         escapeMenu.SetActive(!escapeMenu.activeSelf);
         Time.timeScale = escapeMenu.activeSelf ? 0 : 1;
+        //Cursor.lockState = escapeMenu.activeSelf ? CursorLockMode.Locked : CursorLockMode.None;
+        Cursor.visible = escapeMenu.activeSelf;
     }
 
     public void Exit()
