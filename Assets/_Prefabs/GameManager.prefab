@@ -46,4 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pacGumCollectedNumber: 0
   pacGumMaxNumber: 0
-  pacGumCounter: {fileID: 0}
+  cinemachineBrain: {fileID: 0}
+  winSound: {fileID: 8300000, guid: d91f549fa45c3db4c887b1dec9fd016a, type: 3}

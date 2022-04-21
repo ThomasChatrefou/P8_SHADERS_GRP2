@@ -54,8 +54,10 @@ public class MenuManager : MonoBehaviour
 
     public void DisplayMessageAndReset(string msg)
     {
+
         textDisplayer.text = msg;
         textDisplayer.gameObject.SetActive(true);
+        GameManager.instance.Pause();
         StartCoroutine(HideTextAfterTwoSecondAndResetScene());
     }
 
@@ -68,7 +70,8 @@ public class MenuManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         textDisplayer.gameObject.SetActive(true);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        GameManager.instance.Resume();
     }
 
     void OnDestroy()

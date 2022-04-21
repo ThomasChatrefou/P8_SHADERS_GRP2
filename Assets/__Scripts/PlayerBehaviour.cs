@@ -7,7 +7,6 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] int initLife = 3;
     [SerializeField] AnimationCurve flashingSequence;
     [SerializeField] Material chompMat;
-    [SerializeField] AudioClip damageSound;
     [SerializeField] AudioClip deathSound;
     [SerializeField] CameraShaker cameraShaker;
 
@@ -29,16 +28,13 @@ public class PlayerBehaviour : MonoBehaviour
     public void Damage()
     {
         life--;
+	if(cameraShaker != null)
+                cameraShaker.Shake();
+        }
         if(life <= 0)
         {
             SoundManager.instance.playSound(deathSound);
             MenuManager.instance.DisplayMessageAndReset("You lost");
-        }
-        else
-        {
-            SoundManager.instance.playSound(damageSound);
-            if(cameraShaker != null)
-                cameraShaker.Shake();
         }
     }
 }
